@@ -39,7 +39,13 @@ public class Employee {
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
         return sdf.format(orientationDate);
     }
-
+    // Parent method
+    public void doOrientation(String cubeId){
+        meetWithHrForBenefitAndSalryInfo();
+        meetDepartmentStaff();
+        reviewDeptPolicies();
+        moveIntoCubicle(cubeId);
+    }
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
     public void meetWithHrForBenefitAndSalryInfo() {
@@ -84,7 +90,6 @@ public class Employee {
     public void setFirstName(String firstName) {
         if (firstName == null || firstName.isEmpty()) {
             System.out.println("Please enter a name");
-            return;
         } else {
             this.firstName = firstName;
         }
@@ -97,7 +102,6 @@ public class Employee {
     public void setLastName(String lastName) {
         if (lastName == null || lastName.isEmpty()) {
             System.out.println("Please enter a name");
-            return;
         } else {
             this.lastName = lastName;
         }
@@ -110,7 +114,6 @@ public class Employee {
     public void setSsn(String ssn) {
         if (ssn == null || ssn.isEmpty() || ssn.length() != 9) {
             System.out.println("Please enter a valid SSN (no hyphens)");
-            return;
         } else {
             this.ssn = ssn;
         }
@@ -156,7 +159,6 @@ public class Employee {
     public void setCubeId(String cubeId) {
         if (cubeId == null || cubeId.isEmpty()) {
             System.out.println("Please enter a valid cubicle ID");
-            return;
         } else {
             this.cubeId = cubeId;
         }
@@ -169,7 +171,6 @@ public class Employee {
     public void setOrientationDate(Date orientationDate) {
         if (orientationDate == null) {
             System.out.println("Invalid date");
-            return;
         } else {
             this.orientationDate = orientationDate;
         }

@@ -1,13 +1,14 @@
 package clazz.encapsulation.good;
 
 /**
- * In this good example, notice that the Car talks to the engine so that
- * the Startup class does not need to do this. We're hiding the details
- * of how the engine works by encapsulating those details here.
+ * In this good example, notice that the Car talks to the engine so that the
+ * Startup class does not need to do this. We're hiding the details of how the
+ * engine works by encapsulating those details here.
  *
  * @author jlombardo
  */
 public class Car {
+
     // NO magic numbers -- use constants
     private static final int MIN_CYL = 4;
     private static final int MAX_CYL = 12;
@@ -18,6 +19,7 @@ public class Car {
     // and its functions are hidden from the Startup class (or any other class)
     // resulting in good encapsulation.
     private Engine engine;
+    private CarReportService report;
 
     // Arguments validated and sensible default applied if illegal
     // Use of constants make change easier and less error prone.
@@ -26,24 +28,29 @@ public class Car {
     // number of setter method needed if we use custom constructor arguments,
     // which also promotes reliability. But don't use more than three or four.
     public Car(int numOfCylinders) {
-        if(numOfCylinders < MIN_CYL || numOfCylinders > MAX_CYL) {
+        report = new CarReportService(this);
+        if (numOfCylinders < MIN_CYL || numOfCylinders > MAX_CYL) {
             // if illegal use default
-            engine = new Engine(MIN_CYL);
+            engine = new Engine(MIN_CYL,report);
             engineType = "V" + MIN_CYL;
         } else {
-            engine = new Engine(numOfCylinders);
+            engine = new Engine(numOfCylinders,report);
             engineType = "V" + numOfCylinders;
         }
+        
     }
 
     // Car delegates to engine
     public void start() {
         engine.startEngine();
+        this.report = report;
+        report.outputRunningStatus();
     }
 
     // Car delegates to engine
     public void turnOff() {
         engine.stop();
+        report.outputRunningStatus();
     }
 
     public String getEngineType() {

@@ -10,5 +10,13 @@ package lab3;
  * @author Benjamin
  */
 public class ReportService {
-    
+
+    private Employee employee;
+
+    public ReportService(Employee employee) {
+        this.employee = employee;
+    }
+    public void outputHRMeeting(){
+        System.out.println(employee.getFirstName() + " " + employee.getLastName() + " met with Hr on ");
+    }
 }

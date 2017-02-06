@@ -42,8 +42,8 @@ public class Car {
 
     // Car delegates to engine
     public void start() {
-        engine.startEngine();
         this.report = report;
+        engine.startEngine();
         report.outputRunningStatus();
     }
 

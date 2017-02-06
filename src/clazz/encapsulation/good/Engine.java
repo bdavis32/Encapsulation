@@ -20,17 +20,19 @@ public class Engine {
     public void startEngine() {
         if (!running) {
             running = true;
-        }
+        }else{
         this.report = report;
         report.outputRunningStatus();
+        }
     }
 
     public void stop() {
         if (running) {
             running = false;
-        }
+        } else{
         this.report = report;
         report.outputRunningStatus();
+        }
     }
 
     public CarReportService getReport() {

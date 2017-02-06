@@ -11,12 +11,18 @@ package lab3;
  */
 public class ReportService {
 
-    private Employee employee;
+    private String report = "";
 
-    public ReportService(Employee employee) {
-        this.employee = employee;
+    public void addData(String data) {
+        report += data;
     }
-    public void outputHRMeeting(){
-        System.out.println(employee.getFirstName() + " " + employee.getLastName() + " met with Hr on ");
+
+    public void outputReport() {
+        System.out.println(report);
     }
+
+    public void clearReport() {
+        report = "";
+    }
+
 }

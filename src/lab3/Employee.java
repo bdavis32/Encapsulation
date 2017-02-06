@@ -46,6 +46,7 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    private ReportService reportService;
 
     public Employee(String firstName, String lastName, String ssn) {
         // Using setter method guarantees validation will be performed
@@ -215,5 +216,12 @@ public class Employee {
             System.out.println("orientationDate is required");
         }
         this.orientationDate = orientationDate;
+    }
+    public ReportService getReportService() {
+        return reportService;
+    }
+
+    public void setReportService(ReportService reportService) {
+        this.reportService = reportService;
     }
 }
